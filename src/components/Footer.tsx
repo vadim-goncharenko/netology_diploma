@@ -17,7 +17,7 @@ export default function Footer() {
             <h5>Информация</h5>
             <ul className="nav flex-column">
               {menu.map((item, index) =>
-                <NavLink key={index} className={ ({ isActive }) => classnames("nav-link", { "active": isActive }) } to={item.link} >
+                <NavLink key={index} className={ ({ isActive }) => classnames("nav-link", { "active": isActive }) } to={item.link} >
                   <li className="nav-item">
                     {item.name}
                   </li>

@@ -118,4 +118,4 @@ export interface SearchCatalogPayload {
   search: string
 };
 
-export type FixMeLater = any;
+export type RootState = any;

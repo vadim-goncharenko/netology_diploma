@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CatalogItems, CatalogStateProps, CategoryItem, FixMeLater, IncreaseCatalogOffsetPayload,
+import type { CatalogItems, CatalogStateProps, CategoryItem, RootState, IncreaseCatalogOffsetPayload,
   SearchCatalogPayload, SetActiveCategoryPayload, SetCatalogDataPayload } from '../../../types/types';
 
 const mergeData = (a: CatalogItems, b: CatalogItems) => {
@@ -14,7 +14,7 @@ export const categoryAllOption: CategoryItem = {
 };
 
 const initialState: CatalogStateProps = {
-  data: null,
+  data: new Array(),
   offset: 0,
   lastLoadedItemCount: null,
   activeCategoryID: categoryAllOption.id,
@@ -64,11 +64,13 @@ export const catalogSlice = createSlice({
   }
 });
 
+
+
 export const { setActiveCategory, setCatalogData, increaseCatalogOffset, addCatalogData, setCatalogSearchText, searchCatalog } = catalogSlice.actions;
-export const selectActiveCategoryID = (state: FixMeLater) => state.catalog.activeCategoryID;
-export const selectCatalogOffset = (state: FixMeLater) => state.catalog.offset;
-export const selectCatalogData = (state: FixMeLater) => state.catalog.data;
-export const selectCatalog = (state: FixMeLater) => state.catalog;
-export const selectCatalogSearchText = (state: FixMeLater) => state.catalog.searchText;
-export const selectCatalogSearchParam = (state: FixMeLater) => state.catalog.searchParam;
+export const selectActiveCategoryID = (state: RootState) => state.catalog.activeCategoryID;
+export const selectCatalogOffset = (state: RootState) => state.catalog.offset;
+export const selectCatalogData = (state: RootState) => state.catalog.data;
+export const selectCatalog = (state: RootState) => state.catalog;
+export const selectCatalogSearchText = (state: RootState) => state.catalog.searchText;
+export const selectCatalogSearchParam = (state: RootState) => state.catalog.searchParam;
 export default catalogSlice.reducer;

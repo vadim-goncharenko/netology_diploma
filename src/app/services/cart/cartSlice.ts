@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartData, CartItem, CartItems, CartState, DeleteFromCartPayload, FixMeLater, Order, Owner } from '../../../types/types';
+import { CartData, CartItem, CartItems, CartState, DeleteFromCartPayload, RootState, Order, Owner } from '../../../types/types';
 
 const initialState: CartState = {
   data: null, // data[product][size] = { id, count, price, title, size }
@@ -56,7 +56,7 @@ export const cartSlice = createSlice({
   }
 });
 
-export const selectCartData = (state: FixMeLater) => state.cart.data;
+export const selectCartData = (state: RootState) => state.cart.data;
 
 // convert to array
 export const convertCartDataToArray = (data: CartData): CartItems => {
@@ -71,11 +71,11 @@ export const convertCartDataToArray = (data: CartData): CartItems => {
     ))));
 };
 
-export const selectCountInCart = (state: FixMeLater) => (state.cart.data == null ? null
+export const selectCountInCart = (state: RootState) => (state.cart.data == null ? null
   : Object.keys(state.cart.data).length === 0 ? 0
   : Object.keys(state.cart.data).reduce( (sum, product) => (sum + Object.keys(state.cart.data[product]).length), 0 ));
 
-export const selectCartDataAsArray = (state: FixMeLater):CartItems => convertCartDataToArray(state.cart.data);
+export const selectCartDataAsArray = (state: RootState):CartItems => convertCartDataToArray(state.cart.data);
 
 export const selectOwner = (state: any) => state.cart.owner;
 
