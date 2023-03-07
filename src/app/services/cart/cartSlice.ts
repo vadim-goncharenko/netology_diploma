@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartData, CartItem, CartItems, CartState, DeleteFromCartPayload, RootState, Order, Owner } from '../../../types/types';
 
 const initialState: CartState = {
-  data: null, // data[product][size] = { id, count, price, title, size }
+  data: new Array(), // data[product][size] = { id, count, price, title, size }
   owner: {
     phone: '',
     address: '',
